@@ -3,18 +3,15 @@
   "tasks": {
     "fmt": "deno fmt",
     "lint": "deno lint",
-    "start": "deno run -A --watch=main.ts,static,tailwind.config.ts main.ts",
-    "preview": "deno run -A main.ts",
-    "build:css": "deno run -A npm:@tailwindcss/cli@4.1.18 -c tailwind.config.ts -i ./static/tailwind.css -o ./static/styles.css --minify"
+    "start": "deno run -A --watch=main.ts,static main.ts",
+    "preview": "deno run -A main.ts"
   },
   "imports": {
     "$std/": "https://deno.land/std@0.216.0/",
     "hono": "jsr:@hono/hono",
     "hono/": "jsr:@hono/hono/",
     "hono/html": "jsr:@hono/hono/html",
-    "hono/html/": "jsr:@hono/hono/html/",
-    "tailwindcss": "npm:@tailwindcss/cli@4.1.18",
-    "tailwindcss/": "npm:@tailwindcss/cli@4.1.18/"
+    "hono/html/": "jsr:@hono/hono/html/"
   },
   "nodeModulesDir": "auto",
   "license": "MIT"

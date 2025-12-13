@@ -1,9 +1,0 @@
-@import "tailwindcss";
-
-@source "./main.ts";
-
-/* Custom base tweaks */
-body {
-  word-break: auto-phrase;
-  font-feature-settings: "palt";
-}
