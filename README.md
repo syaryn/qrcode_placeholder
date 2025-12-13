@@ -1,46 +1,33 @@
 # QRコードプレースホルダーメーカー
 
-## プロジェクト概要
-
-このプロジェクトは、Freshフレームワークを使用した最新のWebアプリケーションです。シンプルな構成に加え、QRコード生成機能を搭載しています。
+Hono + htmx で構成されたシンプルなQRコードプレースホルダー生成サービスです。既存のURL仕様を維持しつつ、`accept-language` による言語判定と軽量JSによるコピー/ダウンロードを提供します。
 
 ## QR Code API
 
-QRコードは以下のエンドポイントで生成できます:
-
-- Endpoint: /api/qr
+- Endpoint: `/api/qr`
 - パラメータ:
-  - data:
-    QRコードに埋め込むデータ（指定がない場合はリクエストURLが使用されます）
-  - size: 横幅 (ピクセル単位、例: 300。10000以上の場合は9999に変換されます)
-  - format: ファイル形式 ("png" または "svg", デフォルトは "png")
+  - `data`: QRコードに埋め込むデータ（指定がない場合はリクエストURLが使用されます）
+  - `size`: 横幅 (ピクセル単位、例: 300。10000以上の場合は9999に変換されます)
+  - `format`: ファイル形式 (`png` または `svg`, デフォルトは `png`)
 
-例:
+例: `/api/qr?data=Hello%20World&size=300&format=png`
 
-```
-/api/qr?data=Hello%20World&size=300&format=png
-```
+## セットアップ
 
-## インストール
-
-1. Denoをインストールしてください:
-   https://deno.land/manual/getting_started/installation
-2. リポジトリをクローンしてください:
+1. Deno をインストール: https://deno.land/manual/getting_started/installation
+2. リポジトリを取得して移動:
    ```
    git clone https://github.com/syaryn/qrcode_placeholder.git
-   cd your-repo
+   cd qrcode_placeholder
    ```
-3. 必要な依存パッケージをインストール（Freshのドキュメントを参照）
+3. 必要に応じて環境変数 `url_prefix` を設定（サブパス配信時に付与）
 
-## 使用方法
+## 開発 / 実行
 
-以下のコマンドでプロジェクトを開始します:
+- 開発サーバー: `deno task start` (ファイル監視あり)
+- プレビュー: `deno task preview`
 
-```
-deno task start
-```
-
-また、QRコード生成はアプリ内のQRGeneratorコンポーネント（/islands/QRGenerator.tsx）で利用されています。
+ブラウザで `http://localhost:8000` を開き、フォームからQRを生成します。htmxにより同一ページでプレビューが更新され、コピー/ダウンロードは軽量JSで動作します。
 
 ## ライセンス
 

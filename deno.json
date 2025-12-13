@@ -1,39 +1,20 @@
 {
   "lock": false,
   "tasks": {
-    "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
-    "cli": "echo \"import '\\$fresh/src/dev/cli.ts'\" | deno run --unstable -A -",
-    "manifest": "deno task cli manifest $(pwd)",
-    "start": "deno run -A --watch=static/,routes/ dev.ts",
-    "build": "deno run -A dev.ts build",
+    "fmt": "deno fmt",
+    "lint": "deno lint",
+    "start": "deno run -A --watch=main.ts,static,tailwind.config.ts main.ts",
     "preview": "deno run -A main.ts",
-    "update": "deno run -A -r https://fresh.deno.dev/update ."
+    "build:css": "deno run -A npm:@tailwindcss/cli@4.1.18 -c tailwind.config.ts -i ./static/tailwind.css -o ./static/styles.css --minify"
   },
-  "lint": {
-    "rules": {
-      "tags": [
-        "fresh",
-        "recommended"
-      ]
-    }
-  },
-  "exclude": [
-    "**/_fresh/*"
-  ],
   "imports": {
-    "$fresh/": "https://deno.land/x/fresh@1.7.3/",
-    "preact": "https://esm.sh/preact@10.22.0",
-    "preact/": "https://esm.sh/preact@10.22.0/",
-    "@preact/signals": "https://esm.sh/*@preact/signals@1.2.2",
-    "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.5.1",
-    "tailwindcss": "npm:tailwindcss@3.4.1",
-    "tailwindcss/": "npm:/tailwindcss@3.4.1/",
-    "tailwindcss/plugin": "npm:/tailwindcss@3.4.1/plugin.js",
-    "$std/": "https://deno.land/std@0.216.0/"
-  },
-  "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "preact"
+    "$std/": "https://deno.land/std@0.216.0/",
+    "hono": "jsr:@hono/hono",
+    "hono/": "jsr:@hono/hono/",
+    "hono/html": "jsr:@hono/hono/html",
+    "hono/html/": "jsr:@hono/hono/html/",
+    "tailwindcss": "npm:@tailwindcss/cli@4.1.18",
+    "tailwindcss/": "npm:@tailwindcss/cli@4.1.18/"
   },
   "nodeModulesDir": "auto",
   "license": "MIT"
